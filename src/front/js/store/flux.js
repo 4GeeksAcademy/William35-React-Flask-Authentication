@@ -20,7 +20,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-
+			createAccount:(useremail, userpassword) => {
+				fetch(process.env.BACKEND_URL+"/api/signup",{
+					method:"POST", 
+					headers: {
+						"Content-type": "application/json; charset=UTF-8"
+					  },
+					  body: JSON.stringify({
+						email: useremail, password: userpassword
+					  })
+				}).then(response => response.json())
+				.then(result =>{
+					console.log(result)
+				}).catch(error => console.log(error))
+			},
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
