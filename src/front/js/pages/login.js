@@ -5,7 +5,7 @@ export const Login = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="text-center mt-5">
+    <div className="text-center mt-5"> 
       <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">
@@ -38,7 +38,7 @@ export const Login = () => {
           </label>
         </div>
         <button type="submit" class="btn btn-primary">
-          Submit
+          Login
         </button>
       </form>
     </div>

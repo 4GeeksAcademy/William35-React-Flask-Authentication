@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Signup = () => {
   const { store, actions } = useContext(Context);
-
+  const navigate = useNavigate()
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
   return (
     <div className="text-center mt-5">
-      <form>
+      <div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">
             Email address
           </label>
           <input
             type="email"
+            onChange={(event) => setemail(event.target.value)}
+            value={email}
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
@@ -28,6 +33,8 @@ export const Signup = () => {
           <input
             type="password"
             class="form-control"
+            onChange={(event) => setpassword(event.target.value)}
+            value={password}
             id="exampleInputPassword1"
           />
         </div>
@@ -37,10 +44,16 @@ export const Signup = () => {
             Check me out
           </label>
         </div>
-        <button type="submit" class="btn btn-primary">
-          Submit
+        <button onClick={()=> 
+        {
+          if(actions.createAccount(email, password)){
+          navigate("/login") 
+          }
+        }}
+         class="btn btn-primary">
+          Create Account
         </button>
-      </form>
+      </div>
     </div>
   );
 };
