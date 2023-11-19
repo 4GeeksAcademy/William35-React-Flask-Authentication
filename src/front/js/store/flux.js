@@ -38,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return issignedup
 			},
 			login:(useremail, userpassword) => {
-				fetch(process.env.BACKEND_URL+"/api/login",{
+				return fetch(process.env.BACKEND_URL+"/api/login",{
 					method:"POST", 
 					headers: {
 						"Content-type": "application/json; charset=UTF-8"
@@ -47,9 +47,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						email: useremail, password: userpassword
 					  })
 				}).then(response => response.json())
-				.then(result =>{
-					console.log(result)
-				}).catch(error => console.log(error))
 			},
 
 
